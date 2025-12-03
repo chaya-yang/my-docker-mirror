@@ -1,4 +1,4 @@
-name: Mirror libretranslate to Docker Hub
+name: Mirror LibreTranslate to Docker Hub
 
 on:
   workflow_dispatch:  # 手动触发
@@ -9,10 +9,10 @@ jobs:
   mirror:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Docker Buildx
+      - name: Set up Docker
         uses: docker/setup-buildx-action@v3
 
       - name: Login to Docker Hub
@@ -21,8 +21,17 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Pull from Docker Hub and Push to your repo
+      - name: Mirror and push image
         run: |
+          echo "开始同步 LibreTranslate 镜像..."
+          
+          # 拉取原镜像
           docker pull libretranslate/libretranslate:latest
+          
+          # 标记为你的镜像
           docker tag libretranslate/libretranslate:latest hanmenger777/libretranslate:latest
+          
+          # 推送镜像
           docker push hanmenger777/libretranslate:latest
+          
+          echo "镜像同步完成！"
