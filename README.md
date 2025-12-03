@@ -11,4 +11,4 @@
 
 ### 拉取镜像
 ```bash
-docker pull hanmenger777/libretranslate:latest
+docker pull hanmenger/libretranslate:latest
