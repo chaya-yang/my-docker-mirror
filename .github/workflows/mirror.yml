@@ -9,10 +9,10 @@ jobs:
   mirror:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Docker
+      - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
       - name: Login to Docker Hub
@@ -29,9 +29,10 @@ jobs:
           docker pull libretranslate/libretranslate:latest
           
           # 标记为你的镜像
-          docker tag libretranslate/libretranslate:latest hanmenger777/libretranslate:latest
+          docker tag libretranslate/libretranslate:latest hanmenger/libretranslate:latest
           
           # 推送镜像
-          docker push hanmenger777/libretranslate:latest
+          docker push hanmenger/libretranslate:latest
           
-          echo "镜像同步完成！"
+          echo "✅ 镜像同步完成！"
+          echo "镜像地址: docker.io/hanmenger/libretranslate:latest"
