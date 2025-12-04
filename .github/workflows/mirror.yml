@@ -29,10 +29,10 @@ jobs:
           docker pull libretranslate/libretranslate:latest
           
           # 标记为你的镜像
-          docker tag libretranslate/libretranslate:latest hanmenger/libretranslate:latest
+          docker tag libretranslate/libretranslate:latest hanmenger777/libretranslate:latest
           
           # 推送镜像
-          docker push hanmenger/libretranslate:latest
+          docker push hanmenger777/libretranslate:latest
           
           echo "✅ 镜像同步完成！"
-          echo "镜像地址: docker.io/hanmenger/libretranslate:latest"
+          echo "镜像地址: docker.io/hanmenger777/libretranslate:latest"
